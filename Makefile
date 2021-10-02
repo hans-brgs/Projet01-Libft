@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2021/10/02 18:05:18 by hbourgeo         ###   ########.fr        #
+#    Updated: 2021/10/02 20:34:18 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = 
 NAME = libft.a
 
-SRC = ft_isalpha.c \
-ft_isalnum.c \
-ft_isdigit.c 
+SRC = 	ft_isalpha.c	\
+		ft_isalnum.c	\
+		ft_isdigit.c	\
+		ft_isascii.c	\
 
 OBJ = $(SRC:.c=.o)
 
