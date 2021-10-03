@@ -1,0 +1,243 @@
+# Libft - Votre toute première bibliothèque personnelle
+
+## Nouvelle notion à apprendre
+
+- [ ] Makefile
+- [x] Statics function
+- [ ] Use the command _'ar'_ to create your library
+
+## Flag à utiliser pour les tests
+
+```bash
+# Norminette 
+norminette -R CheckDefine -R CheckForbidenSourceHeader | sed '/test/,$d'
+# Compilation
+gcc -Wall -Wextra -Wall test/test_fct.c fct.c
+```
+
+## Function à coder
+
+*Ces fonctions neccessitent aucune fonctions externes.*
+
+|      | Function     |   *Fonctionnel*    |      *Norme*       |   *Compilation*    |       *Test*       |
+| :--- | :----------- | :----------------: | :----------------: | :----------------: | :----------------: |
+| 01   | `ft_isalpha` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 02   | `ft_isdigit` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 03   | `ft_isalnum` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 04   | `ft_isascii` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 05   | `ft_isprint` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 06   | `ft_strlen`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 07   | `ft_memset`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 08   | `ft_bzero`   |        :x:         |        :x:         |        :x:         |        :x:         |
+| 09   | `ft_memcpy`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 10   | `ft_memmove` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 11   | `ft_strlcpy` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 12   | `ft_strlcat` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 13   | `ft_toupper` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 14   | `ft_tolower` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 15   | `ft_strchr`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 16   | `ft_strrchr` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 17   | `ft_strncmp` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 18   | `ft_memchr`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 19   | `ft_memcmp`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 20   | `ft_strnstr` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 21   | `ft_atoi`    |        :x:         |        :x:         |        :x:         |        :x:         |
+
+*Ces fonctions neccessitent l'utilisation de la fonction `malloc`*.
+
+|      | Function    | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
+| :--- | :---------- | :-----------: | :-----: | :-----------: | :----: |
+| 22   | `ft_calloc` |      :x:      |   :x:   |      :x:      |  :x:   |
+| 23   | `ft_strdup` |      :x:      |   :x:   |      :x:      |  :x:   |
+
+*Fonction non inclue dans libc, certaines de ces fonctions peuvent être utiles pour écrite les fonctions des deux premières tables.*
+
+|      | Function        | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
+| :--- | :-------------- | :-----------: | :-----: | :-----------: | :----: |
+| 24   | `ft_substr`     |      :x:      |   :x:   |      :x:      |  :x:   |
+| 25   | `ft_strjoin`    |      :x:      |   :x:   |      :x:      |  :x:   |
+| 26   | `ft_strtrim`    |      :x:      |   :x:   |      :x:      |  :x:   |
+| 27   | `ft_split`      |      :x:      |   :x:   |      :x:      |  :x:   |
+| 28   | `ft_itoa`       |      :x:      |   :x:   |      :x:      |  :x:   |
+| 29   | `ft_strmapi`    |      :x:      |   :x:   |      :x:      |  :x:   |
+| 30   | `ft_striteri`   |      :x:      |   :x:   |      :x:      |  :x:   |
+| 31   | `ft_putchar_fd` |      :x:      |   :x:   |      :x:      |  :x:   |
+| 32   | `ft_putstr_fd`  |      :x:      |   :x:   |      :x:      |  :x:   |
+| 33   | `ft_putendl_fd` |      :x:      |   :x:   |      :x:      |  :x:   |
+| 34   | `ft_putnbr_fd`  |      :x:      |   :x:   |      :x:      |  :x:   |
+
+*Fichier à ajouter au projet :*
+
+| Fichier    | *Valider* |
+| :--------- | :-------: |
+| `*.c`      |    :x:    |
+| `libft.h`  |    :x:    |
+| `Makefile` |    :x:    |
+
+*Programme à ajouter au projet :*
+
+| Fichier   | *Valider* |
+| :-------- | :-------: |
+| `libft.a` |    :x:    |
+
+## I. Makefile
+
+----------------
+
+### a. Introduction : Makefile c'est quoi ?
+
+Un Makefile est un fichier contenant toutes les commandes que l’on aurait typiquement tapé dans le terminal pour compiler et lancer certaines parties de notre code. Les stocker dans ce fichier nous permet d’accéder à ces commandes en tapant simplement la commande make suivie de potentiels methodes.
+
+Les avantages du makefile sont les suivants :
+
+- Ecrire toutes les règles de compilation dans le fichier Makefile permet de compiler un gros projet avec une unique ligne de commande.
+
+- Lors de la modification d'un fichier d'un projet, le make file permet de recompilé uniquement le fichier modifié. Cela permet pour les gros projets d'eviter de recompiler l'ensemble du projet des qu'on réalise un changement.
+
+### b. Les règles du Makefile
+
+Les règles du makefile prennent la forme suivante :
+
+```Makefile
+#Theorique
+<cible>: <dépendances>
+  Etape pour construire la cible avec les dépendances.
+
+ 
+```
+
+En pratique, si l'on souhaite compiler le projet **Hello World** composé de trois fichiers :
+
+- main.c
+- hello.c
+- hello.h
+
+Cela donne :
+
+```Makefile
+#Pratique
+hello: hello.o main.o
+  gcc -o hello hello.o main.o
+
+hello.o : hello.c
+  gcc -o hello.o -c hello.c -Wall -Werror -Wextra
+
+main.o : main.c hello.h
+  gcc -o main.o -c main.c -Wall -Werror -Wextra
+
+```
+
+Ces règles incluent des **cibles**, qui peuvent être une action que *make* doit entreprendre (par exemple "clean" ou "build") ou des fichiers/objets que *make* devra construire (par exemple des fichiers .o ou un exécutable), et les commandes qui doivent être exécutées afin de construire cette **cible** à partir des **dépendances**. Lorsque vous appelez le programme *make*, il parcourt chacune de ces cibles dans votre Makefile et les exécute.
+
+### c. Les variables
+
+Les Makefile supporte les variables. Ces variables permettent de limiter la redondance dans le fichier text.
+
+Exemple des variables principales :
+
+```Makefile
+CC = gcc #Indique quel compilateur à utiliser
+CFLAGS = -Wall -Werror -Wextra #Spécifie les lignes de commandes pour les flags
+LDFLAGS = #Spécifie options d'édition de liens
+EXEC = hello #nom des exécutables à générer
+
+```
+
+### d. Les règles spécifiques
+
+Pour améliorer son Makefile, on peut rajouter quelques cibles standards (règles spécifiques) :
+– all : à placer généralement au début du fichier ; les dépendances associées correspondent
+à l’ensemble des exécutables à produire ;
+– clean : normalement pas de dépendance ; la commande associée supprime tous les
+fichiers intermédiaires (notamment les fichiers objets) ;
+– mrproper : la commande correspondante supprime tout ce qui peut être regénéré, ce
+qui permet une reconstruction complète du projet lors de l’appel suivant à make.
+
+### e. Les variables magiques
+
+les variables magiques :
+
+\$@ permet d’accéder au nom de la target (cible)
+
+\$^ permet d’accéder aux noms des dépendances ( les fichiers après “:” )
+
+\$< permet d’accéder au nom du premier fichier à la droite du “:”
+
+Source :
+
+- <https://ucl-ingi.github.io/LEPL1503-Blog/Makefile-Variables/>
+- <https://github.com/lifeissweetgood/makefile-tutorial>
+- <https://ensiwiki.ensimag.fr/images/e/eb/Makefile.pdf>
+- <https://perso.ensta-paris.fr/~diam/dev/online/make/introMake-AlexBriant.html>
+
+## II. Statics function
+
+---
+En C, les fonctions sont globales par défaut. Contrairement aux fonctions globales en C, l'accès aux fonctions statiques est limité au fichier dans lequel elles sont déclarées.
+
+Prototypage :
+
+```C
+static int fun(void)
+{
+  printf("I am a static function ");
+}
+```
+
+## III. Command _`ar`_
+
+----------------------
+
+Les étapes pour construire une librairie static avec `ar`.
+
+1. Compilation des fichier C sans édition des liens.
+
+Pour compiler les fichiers du code sources, nous utiliserons le compilateur `gcc` avec l'option `-c`.
+
+L'option `-c` permet de compiler les fichier sans l'édition de lien. La compilation s'arrète à la troisième phase de la compilation avant l'édition des liens (1 - *Traitement Préprocesseur : Transformation textuel, inclusion des autres fichiers et remplacement de certaines chaines de caractères* 2 - *Compilation : Traduction du fichier engendré par le préprocesseur en `assembleur`* 3 - *Assemblage :  transforme le code assembleur en un fichier `objet`, compréhensible par le processeur*).
+
+Ici nous nous arrétons donc à la création du fichier objets.
+
+```shell
+gcc -c fonctions.c -Wall -Wextra -Werror
+```
+
+Cela va générer des fichiers objects avec le meme nom que les fichiers sources `.c`.
+
+Ce sont ces fichiers objets que nous devons ajouter au fichier de bibliothèque.
+
+2. Création de la bibliothèque
+
+Pour créer le fichier de la biliothèque - qui est en fait un fichier d'archive - nous utiliserons ar.
+
+Nous allons utiliser les options :
+
+- `-c` : Creation du fichier librairie.
+- `-r` : Ajout avec remplacement, permet d'ajouter les fichiers `.o` à la librairie.
+- `-s` : Index, option pour créer un index des fichiers à l'intérieur de la librairie. Cette option permet d'accélérer l'édition des liens vers la bibliothèque lors de la compilation.
+
+Nous allons appeler notre libraire *"libft.a"*. Nous indiquant le nom en premier argument de la ligne de commande. Les autres arguments correspondront aux fichiers objets.
+
+```Shell
+ar -crs libft.a functions.o
+```
+
+3. Utilisation de la librairie
+   
+Maintenant notre librairie *libft* est prête à l'emploie. 
+Nous pouvons l'utiliser dans un programme. Pour cela, il faudra indiquer lors de l'étape d'édition de lien de notre programme la bibliothèque à linker.
+
+On utilise les command suivante : 
+```Shell
+gcc main.c -L. -lname -o main
+```
+
+Description des options : 
+
+- `-L.`Spécifie le path de la librairie. Ici "." fait référence au répertoire courant.
+- `-l` specifie le nom de la librairie sans le préfix "lib" et le suffix ".a"
+
+Source :
+
+- <https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/>
+- <https://dev.to/iamkhalil11/all-you-need-to-know-about-c-static-libraries-1o0b>
