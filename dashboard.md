@@ -1,10 +1,16 @@
 # Libft - Votre toute première bibliothèque personnelle
 
-## Nouvelle notion à apprendre
+## Nouvelle notion globale à apprendre
 
 - [ ] Makefile
 - [x] Statics function
 - [ ] Use the command _'ar'_ to create your library
+
+## Nouvelle notion specifique au langage C à apprendre
+
+- [ ] Overlapping (chevauchement de la mémoire).
+- [ ] t
+- [ ] t
 
 ## Flag à utiliser pour les tests
 
@@ -223,16 +229,17 @@ ar -crs libft.a functions.o
 ```
 
 3. Utilisation de la librairie
-   
-Maintenant notre librairie *libft* est prête à l'emploie. 
+
+Maintenant notre librairie *libft* est prête à l'emploie.
 Nous pouvons l'utiliser dans un programme. Pour cela, il faudra indiquer lors de l'étape d'édition de lien de notre programme la bibliothèque à linker.
 
-On utilise les command suivante : 
+On utilise les command suivante :
+
 ```Shell
 gcc main.c -L. -lname -o main
 ```
 
-Description des options : 
+Description des options :
 
 - `-L.`Spécifie le path de la librairie. Ici "." fait référence au répertoire courant.
 - `-l` specifie le nom de la librairie sans le préfix "lib" et le suffix ".a"
@@ -241,3 +248,79 @@ Source :
 
 - <https://www.howtogeek.com/427086/how-to-use-linuxs-ar-command-to-create-static-libraries/>
 - <https://dev.to/iamkhalil11/all-you-need-to-know-about-c-static-libraries-1o0b>
+
+## IV. Overlapping memory
+
+----------------
+
+memcpy et memmove sont deux fonctions standards de C qui ont pour objectif commun de remplir un espace en mémoire pointé par dest avec les n premiers bytes pointé par source.
+
+La différence entre ces deux functions c'est que memmove gère **L'OVERLAPPING** mais pas memset.
+
+L'overlapping qu'est ce que c'est :
+
+Supposons que nous avons un tableau de 5 chars.
+
+```c
++++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'c' | 'D' | 'E' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+ ```
+
+ nous allons utilisé *memcpy* pour copier les 3 premiers bytes d'un pointeur pointant à l'adresse `0x100` (src), dans le block mémoire débutant à l'adresse `0x102` (dest).
+
+ Dans ce cas on observe un cas d'overlapping.
+
+ L'addresse `0x102` est contenu à la dans le block mémoire *src* et dans le block mémoire *dest*.
+
+ Ainsi lors de la copie le char `c` sera transformé en `a`. memcpy ne copiera plus `abc`, dans le bloc mémoire débutant à l'adresse `0x102`, mais `aba`.
+
+ ```c
+ +++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'a' | 'b' | 'a' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+ ```
+
+ à la place de
+
+  ```c
+ +++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'a' | 'b' | 'c' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+ ```
+
+ La function *memove* permet d'éviter ce chevauchement.
+
+ Son fonctionnement est simple.
+
+- si l'adresse de *src* est positionné avant l'adresse de
+de *dest*, alors :
+
+  - on copie les n bytes de src en partant du dernier bytes vers le premier.
+
+```c
++++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'c' | 'D' | 'c' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+                           ^
+                        Etape 1
++++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'c' | 'b' | 'c' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+                     ^
+                  Etape 2
++++++++++++++++++++++++++++++++
+| 'a' | 'b' | 'c' | 'b' | 'c' |
++++++++++++++++++++++++++++++++
+ 0x100 0x101 0x102 0x103 0x104
+               ^
+            Etape 3
+ ```
+
+
+- Sinon on utilse le meme fonctionnement que la fonction memcpy. 
