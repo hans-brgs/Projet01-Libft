@@ -1,3 +1,7 @@
 =====================================================
-Original = abcde	|	memmove = ababc
+Chaine 0 : Je te bouffe le fiak <3	copié dans	buffer : "Je te bouffe le fiak <3" de longueur 23
+Chaine 1 : Je te bouffe le fiak <3	copié dans	buffer : "Je te bou" de longueur 23
+Chaine 2 : Je te bouffe le fiak <3	copié dans	buffer : "" de longueur 23
+Chaine 3 : Je te bouffe le fiak <3	copié dans	buffer : "" de longueur 23
+Chaine 4 : Je te bouffe le fiak <3	copié dans	buffer : "Je te bouffe le fiak <3" de longueur 23
 =====================================================

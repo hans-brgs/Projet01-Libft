@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -Wall -Werror -Wextra $1 -I../ -L../ -lft
+gcc -Wall -Werror -Wextra $1 -I../ -L../ -lft -lbsd 
 ./a.out
 
 if ! diff -u own_fct_output.txt src_fct_output.txt

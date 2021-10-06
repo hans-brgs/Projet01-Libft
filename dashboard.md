@@ -33,11 +33,11 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 | 04   | `ft_isascii` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 05   | `ft_isprint` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 06   | `ft_strlen`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 07   | `ft_memset`  |        :x:         |        :x:         |        :x:         |        :x:         |
-| 08   | `ft_bzero`   |        :x:         |        :x:         |        :x:         |        :x:         |
-| 09   | `ft_memcpy`  |        :x:         |        :x:         |        :x:         |        :x:         |
-| 10   | `ft_memmove` |        :x:         |        :x:         |        :x:         |        :x:         |
-| 11   | `ft_strlcpy` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 07   | `ft_memset`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 08   | `ft_bzero`   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 09   | `ft_memcpy`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 10   | `ft_memmove` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 11   | `ft_strlcpy` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 12   | `ft_strlcat` |        :x:         |        :x:         |        :x:         |        :x:         |
 | 13   | `ft_toupper` |        :x:         |        :x:         |        :x:         |        :x:         |
 | 14   | `ft_tolower` |        :x:         |        :x:         |        :x:         |        :x:         |
