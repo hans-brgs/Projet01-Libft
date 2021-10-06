@@ -6,25 +6,30 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 21:37:41 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/04 22:03:08 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2021/10/06 10:15:48 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t m;
-	char cp_src
-	
+
 	m = n;
-	while (m--)
+	if (src < dest)
 	{
-		
+		while (n--)
+			*(char *)(dest + n) = *(char *)(src + n);
 	}
-	while (n--)
+	else 
 	{
-		*(char *)dest = *(char *)src;
-		
+		while (m--)
+		{
+			*(char *)(dest) = *(char *)(src);
+			dest++;
+			src++;
+		}	
 	}
+	return (dest);
 }
