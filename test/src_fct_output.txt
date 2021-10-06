@@ -1,5 +1,3 @@
 =====================================================
-Chaine 0 : t		-	Size : 1
-Chaine 1 : test		-	Size : 4
-Chaine 2 : 		-	Size : 0
+Original = Bouffe moi le fiak <3	|	memset = Bouffe moi le coeur<3
 =====================================================

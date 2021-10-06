@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2021/10/02 20:45:46 by hbourgeo         ###   ########.fr        #
+#    Updated: 2021/10/04 21:25:14 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ SRC = 	ft_isalpha.c	\
 		ft_isalnum.c	\
 		ft_isdigit.c	\
 		ft_isascii.c	\
-		ft_isprint.c 	
+		ft_isprint.c 	\
+		ft_memset.c		\
+		ft_bzero.c		\
+		ft_memcpy.c
 
 OBJ = $(SRC:.c=.o)
 
