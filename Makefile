@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2021/10/06 13:03:13 by hbourgeo         ###   ########.fr        #
+#    Updated: 2021/10/09 19:29:06 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,11 @@ SRC = 	ft_isalpha.c	\
 		ft_bzero.c		\
 		ft_memcpy.c		\
 		ft_memmove.c	\
-		ft_strlcpy.c 
-
+		ft_strlcpy.c	\
+		ft_strlcat.c	\
+		ft_toupper.c	\
+		ft_tolower.c	
+		
 OBJ = $(SRC:.c=.o)
 
 HEADER = libft
