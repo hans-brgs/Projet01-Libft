@@ -41,9 +41,9 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 | 12   | `ft_strlcat` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 13   | `ft_toupper` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 14   | `ft_tolower` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 15   | `ft_strchr`  |        :x:         |        :x:         |        :x:         |        :x:         |
-| 16   | `ft_strrchr` |        :x:         |        :x:         |        :x:         |        :x:         |
-| 17   | `ft_strncmp` |        :x:         |        :x:         |        :x:         |        :x:         |
+| 15   | `ft_strchr`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 16   | `ft_strrchr` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 17   | `ft_strncmp` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 18   | `ft_memchr`  |        :x:         |        :x:         |        :x:         |        :x:         |
 | 19   | `ft_memcmp`  |        :x:         |        :x:         |        :x:         |        :x:         |
 | 20   | `ft_strnstr` |        :x:         |        :x:         |        :x:         |        :x:         |

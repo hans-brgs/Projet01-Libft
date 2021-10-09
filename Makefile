@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2021/10/09 19:29:06 by hbourgeo         ###   ########.fr        #
+#    Updated: 2021/10/09 21:44:22 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,10 @@ SRC = 	ft_isalpha.c	\
 		ft_strlcpy.c	\
 		ft_strlcat.c	\
 		ft_toupper.c	\
-		ft_tolower.c	
+		ft_tolower.c	\
+		ft_strchr.c		\
+		ft_strrchr.c	\
+		ft_strncmp.c	
 		
 OBJ = $(SRC:.c=.o)
 
