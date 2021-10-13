@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_strncmp.c                                     :+:      :+:    :+:   */
+/*   test_memchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 21:27:16 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/13 09:09:26 by hbourgeo         ###   ########.fr       */
+/*   Created: 2021/10/13 07:49:15 by hbourgeo          #+#    #+#             */
+/*   Updated: 2021/10/13 08:51:24 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bsd/string.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "libft.h"
 
-
-int main (void)
+int main()
 {
-	char dst[] = "Je te bouffe le fiak <3";
-	char src[] =  "Je te bouffe le fiak";
-	int size[5] = {24, 22, 1, 0, -2};
 	int n;
-	int res;
+	int j;
+	char str[] = "abcdefghijklmnopqrstuvwxyz 0123456789";
+	char chr[] = "amz 059 AMZ";
+	int memsize[3] = {0, 37, 12};
+	char *ptr;
 	FILE *f_own;
 	FILE *f_src;
 	
@@ -29,15 +29,22 @@ int main (void)
 	/*           Own           */
 	/***************************/
 	n = 0;
+	j = 1;
 	f_own = fopen("own_fct_output.txt", "w");
 	fprintf(f_own, "=====================================================\n");
-	while (n < 5)
+	while (chr[n])
 	{
-		res = ft_strncmp(dst, src, size[n]);
-		if (res == 0)
-			fprintf(f_own, "Les %d premiers caractères sont identiques\n", size[n]);
-		else
-			fprintf(f_own, "Au moins un des caractères diffère. %d\n", res);
+		j = 0;
+		while (j < 3)
+		{
+			ptr = ft_memchr(str, chr[n], memsize[j]);	
+			fprintf(f_own, "Testing memchr(%s, %c, %d) : \n", str, chr[n], memsize[j]);
+			if (ptr)
+				fprintf(f_own, "	FOUND\n");
+			else
+				fprintf(f_own, "	NOT FOUND\n");
+			j++;
+		}
 		n++;
 	}
 	fprintf(f_own, "=====================================================\n");
@@ -49,13 +56,19 @@ int main (void)
 	n = 0;
 	f_src = fopen("src_fct_output.txt", "w");
 	fprintf(f_src, "=====================================================\n");
-	while (n < 5)
+	while (chr[n])
 	{
-		res = strncmp(dst, src, size[n]);
-		if (res == 0)
-			fprintf(f_src, "Les %d premiers caractères sont identiques\n", size[n]);
-		else
-			fprintf(f_src, "Au moins un des caractères diffère. %d\n", res);
+		j = 0;
+		while (j < 3)
+		{
+			ptr = memchr(str, chr[n], memsize[j]);
+			fprintf(f_src, "Testing memchr(%s, %c, %d) : \n", str, chr[n], memsize[j]);
+			if (ptr)
+				fprintf(f_src, "	FOUND\n");
+			else
+				fprintf(f_src, "	NOT FOUND\n");
+			j++;
+		}
 		n++;
 	}
 	fprintf(f_src, "=====================================================\n");

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_strncmp.c                                     :+:      :+:    :+:   */
+/*   test_strnstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 21:27:16 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/13 09:09:26 by hbourgeo         ###   ########.fr       */
+/*   Created: 2021/10/13 11:05:02 by hbourgeo          #+#    #+#             */
+/*   Updated: 2021/10/13 11:48:05 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 int main (void)
 {
-	char dst[] = "Je te bouffe le fiak <3";
-	char src[] =  "Je te bouffe le fiak";
-	int size[5] = {24, 22, 1, 0, -2};
+	char big[] = "hey try to flnd me, try to find mE, try to find me ! Oh yeah";
+	char lit[] =  "find me";
+	int size[5] = {0, 4, 25, -2, 100};
 	int n;
-	int res;
+	char	*res;
 	FILE *f_own;
 	FILE *f_src;
 	
@@ -33,11 +33,14 @@ int main (void)
 	fprintf(f_own, "=====================================================\n");
 	while (n < 5)
 	{
-		res = ft_strncmp(dst, src, size[n]);
+		res = ft_strnstr(big, lit, size[n]);
+		fprintf(f_own, "Testing strnstr(\"%s\", \"%s\", %d) : \n", big, lit, size[n]);
 		if (res == 0)
-			fprintf(f_own, "Les %d premiers caractères sont identiques\n", size[n]);
+			fprintf(f_own, "NOT FIND\n");
+		else if (*res == *big)
+			fprintf(f_own, "Little is an empty String\n");
 		else
-			fprintf(f_own, "Au moins un des caractères diffère. %d\n", res);
+			fprintf(f_own, "FIND -> %s\n",res);
 		n++;
 	}
 	fprintf(f_own, "=====================================================\n");
@@ -51,11 +54,14 @@ int main (void)
 	fprintf(f_src, "=====================================================\n");
 	while (n < 5)
 	{
-		res = strncmp(dst, src, size[n]);
+		res = strnstr(big, lit, size[n]);
+		fprintf(f_src, "Testing strnstr(\"%s\", \"%s\", %d) : \n", big, lit, size[n]);
 		if (res == 0)
-			fprintf(f_src, "Les %d premiers caractères sont identiques\n", size[n]);
+			fprintf(f_src, "NOT FIND\n");
+		else if (*res == *big)
+			fprintf(f_src, "Little is an empty String\n");
 		else
-			fprintf(f_src, "Au moins un des caractères diffère. %d\n", res);
+			fprintf(f_src, "FIND -> %s\n",res);
 		n++;
 	}
 	fprintf(f_src, "=====================================================\n");

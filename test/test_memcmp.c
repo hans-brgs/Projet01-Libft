@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_strncmp.c                                     :+:      :+:    :+:   */
+/*   test_memcmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 21:27:16 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/13 09:09:26 by hbourgeo         ###   ########.fr       */
+/*   Created: 2021/10/13 09:08:09 by hbourgeo          #+#    #+#             */
+/*   Updated: 2021/10/13 09:12:54 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 #include <stdio.h>
 #include "libft.h"
 
-
 int main (void)
 {
-	char dst[] = "Je te bouffe le fiak <3";
-	char src[] =  "Je te bouffe le fiak";
-	int size[5] = {24, 22, 1, 0, -2};
+	char dst[50] = "Je te bouffe le fiak <3";
+	char src[50] =  "Je te bouffe le fiak";
+	int size[7] = {50, 24, 12, 22, 1, 0, -2};
 	int n;
 	int res;
 	FILE *f_own;
@@ -31,9 +30,9 @@ int main (void)
 	n = 0;
 	f_own = fopen("own_fct_output.txt", "w");
 	fprintf(f_own, "=====================================================\n");
-	while (n < 5)
+	while (n < 7)
 	{
-		res = ft_strncmp(dst, src, size[n]);
+		res = ft_memcmp(dst, src, size[n]);
 		if (res == 0)
 			fprintf(f_own, "Les %d premiers caractères sont identiques\n", size[n]);
 		else
@@ -49,9 +48,9 @@ int main (void)
 	n = 0;
 	f_src = fopen("src_fct_output.txt", "w");
 	fprintf(f_src, "=====================================================\n");
-	while (n < 5)
+	while (n < 7)
 	{
-		res = strncmp(dst, src, size[n]);
+		res = memcmp(dst, src, size[n]);
 		if (res == 0)
 			fprintf(f_src, "Les %d premiers caractères sont identiques\n", size[n]);
 		else

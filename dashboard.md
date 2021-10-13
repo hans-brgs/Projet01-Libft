@@ -44,7 +44,7 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 | 15   | `ft_strchr`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 16   | `ft_strrchr` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 17   | `ft_strncmp` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 18   | `ft_memchr`  |        :x:         |        :x:         |        :x:         |        :x:         |
+| 18   | `ft_memchr`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 19   | `ft_memcmp`  |        :x:         |        :x:         |        :x:         |        :x:         |
 | 20   | `ft_strnstr` |        :x:         |        :x:         |        :x:         |        :x:         |
 | 21   | `ft_atoi`    |        :x:         |        :x:         |        :x:         |        :x:         |
