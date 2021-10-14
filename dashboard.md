@@ -45,16 +45,16 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 | 16   | `ft_strrchr` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 17   | `ft_strncmp` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 18   | `ft_memchr`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 19   | `ft_memcmp`  |        :x:         |        :x:         |        :x:         |        :x:         |
-| 20   | `ft_strnstr` |        :x:         |        :x:         |        :x:         |        :x:         |
-| 21   | `ft_atoi`    |        :x:         |        :x:         |        :x:         |        :x:         |
+| 19   | `ft_memcmp`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 20   | `ft_strnstr` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 21   | `ft_atoi`    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 *Ces fonctions neccessitent l'utilisation de la fonction `malloc`*.
 
 |      | Function    | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
 | :--- | :---------- | :-----------: | :-----: | :-----------: | :----: |
-| 22   | `ft_calloc` |      :x:      |   :x:   |      :x:      |  :x:   |
-| 23   | `ft_strdup` |      :x:      |   :x:   |      :x:      |  :x:   |
+| 22   | `ft_calloc` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 23   | `ft_strdup` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 *Fonction non inclue dans libc, certaines de ces fonctions peuvent être utiles pour écrite les fonctions des deux premières tables.*
 
@@ -324,3 +324,4 @@ de *dest*, alors :
 
 
 - Sinon on utilse le meme fonctionnement que la fonction memcpy. 
+
