@@ -51,26 +51,26 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 
 *Ces fonctions neccessitent l'utilisation de la fonction `malloc`*.
 
-|      | Function    | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
-| :--- | :---------- | :-----------: | :-----: | :-----------: | :----: |
+|      | Function    |   *Fonctionnel*    |      *Norme*       |   *Compilation*    |       *Test*       |
+| :--- | :---------- | :----------------: | :----------------: | :----------------: | :----------------: |
 | 22   | `ft_calloc` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 23   | `ft_strdup` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 *Fonction non inclue dans libc, certaines de ces fonctions peuvent être utiles pour écrite les fonctions des deux premières tables.*
 
-|      | Function        | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
-| :--- | :-------------- | :-----------: | :-----: | :-----------: | :----: |
-| 24   | `ft_substr`     |      :x:      |   :x:   |      :x:      |  :x:   |
-| 25   | `ft_strjoin`    |      :x:      |   :x:   |      :x:      |  :x:   |
-| 26   | `ft_strtrim`    |      :x:      |   :x:   |      :x:      |  :x:   |
-| 27   | `ft_split`      |      :x:      |   :x:   |      :x:      |  :x:   |
-| 28   | `ft_itoa`       |      :x:      |   :x:   |      :x:      |  :x:   |
-| 29   | `ft_strmapi`    |      :x:      |   :x:   |      :x:      |  :x:   |
-| 30   | `ft_striteri`   |      :x:      |   :x:   |      :x:      |  :x:   |
-| 31   | `ft_putchar_fd` |      :x:      |   :x:   |      :x:      |  :x:   |
-| 32   | `ft_putstr_fd`  |      :x:      |   :x:   |      :x:      |  :x:   |
-| 33   | `ft_putendl_fd` |      :x:      |   :x:   |      :x:      |  :x:   |
-| 34   | `ft_putnbr_fd`  |      :x:      |   :x:   |      :x:      |  :x:   |
+|      | Function        |   *Fonctionnel*    |      *Norme*       |   *Compilation*    | *Test* |
+| :--- | :-------------- | :----------------: | :----------------: | :----------------: | :----: |
+| 24   | `ft_substr`     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 25   | `ft_strjoin`    | :heavy_check_mark: |        :x:         |        :x:         |  :x:   |
+| 26   | `ft_strtrim`    | :heavy_check_mark:         |        :x: |        :x:         |  :x:   |
+| 27   | `ft_split`      |        :x:         |        :x:         |        :x:         |  :x:   |
+| 28   | `ft_itoa`       |        :x:         |        :x:         |        :x:         |  :x:   |
+| 29   | `ft_strmapi`    |        :x:         |        :x:         |        :x:         |  :x:   |
+| 30   | `ft_striteri`   |        :x:         |        :x:         |        :x:         |  :x:   |
+| 31   | `ft_putchar_fd` |        :x:         |        :x:         |        :x:         |  :x:   |
+| 32   | `ft_putstr_fd`  |        :x:         |        :x:         |        :x:         |  :x:   |
+| 33   | `ft_putendl_fd` |        :x:         |        :x:         |        :x:         |  :x:   |
+| 34   | `ft_putnbr_fd`  |        :x:         |        :x:         |        :x:         |  :x:   |
 
 *Fichier à ajouter au projet :*
 
