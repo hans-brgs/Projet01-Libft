@@ -8,8 +8,8 @@
 
 ## Nouvelle notion specifique au langage C à apprendre
 
-- [ ] Overlapping (chevauchement de la mémoire).
-- [ ] t
+- [x] Overlapping (chevauchement de la mémoire).
+- [ ] Code détaillé `ft_split`
 - [ ] t
 
 ## Flag à utiliser pour les tests
@@ -325,3 +325,63 @@ de *dest*, alors :
 
 - Sinon on utilse le meme fonctionnement que la fonction memcpy. 
 
+## V. `ft_split` : détail du code.
+
+----------------
+
+`ft_split` alloue et renvoie un tableau de chaînes de caractères obtenu en séparant 's' en utilisant le caractère 'c' comme délimiteur.  Le tableau doit être terminé par un pointeur NULL.
+
+Les étapes à la bonne réalisation de `ft_split` : 
+ 1. création `ft_strtok`.
+      * Création de `ft_strspn`.
+      * Création de `ft_strcspn`.
+ 2. 
+
+### 1. `ft_strtok`
+
+`ft_strtok` accepte deux chaînes - la première est la chaîne à diviser, la seconde est une chaîne contenant tous les délimiteurs. `ft_strtok` renvoie un pointeur vers le caractère du prochain token. Ainsi, la première fois qu'il est appelé, il pointera sur le premier mot.
+
+Mais il y a autre chose. `strtok` modifie la chaîne originale. Il place des caractères `NULL ('\0')` à la position du délimiteur après chaque appel à `strtok` afin que les segments de chaine de caractères puissent être suivis. `strtok` se souvient également en interne de la position de départ du prochain segment. Ainsi, après le premier appel à strtok, la position de str, ptr et du prochain segment ressemble à ce qui suit :
+
+```C
+str = "Essaye de me couper"
+ptr = ft_strtok(str, " ");
+```
+
+```shell
+> Essaye\0de me couper
+  ^      ^
+  |      prochain élément
+  ptr points here
+```
+
+lors du prochain appel de strtok, le premier paramètre doit être NULL pour que strtok commence à diviser la chaîne à partir de la prochaine position de départ du token dont il se souvient.
+
+```C
+ptr = ft_strtok(NULL, " ");
+```
+
+```shell
+> Essaye\0de\0me couper
+          ^   ^
+          |   prochain élément
+          ptr points here
+```
+
+strtok retourne NULL quand il n'y a plus de tokens, c'est-à-dire que la chaîne entière est divisée. Ceci peut être utilisé pour savoir quand arrêter d'appeler strtok.
+
+Voici une proposition d'implémentation de strtok : 
+
+```C
+char *ft_strtok(char *str, const char *delim)
+{
+  char *tok;
+
+  if (str == NULL)
+    str = tok;
+  tok = str + strspn(str, delim);
+  str
+
+
+}
+```

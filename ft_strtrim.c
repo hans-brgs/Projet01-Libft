@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:55:11 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/16 17:16:25 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2021/10/18 19:23:15 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ char *ft_strtrim(char const *s1, char const *set)
         }
         s1++;
     }
-    return (ft_strrchr);
+    return (str_trim);
 }
