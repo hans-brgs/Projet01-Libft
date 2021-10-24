@@ -6,27 +6,49 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/19 18:25:14 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2021/10/21 21:28:46 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_delim_count(char *tok, const char *delim)
+/*
+ft_strspn return the length of the maximum initial segment
+of the string pointed to by s1 which consists entirely of characters
+from the string pointed to by retained_char.
+*/
+static size_t ft_strspn(const char *s1, const char *retained_char)
 {
-	size_t n;
+	size_t ret;
 
-	n = 0;
-	while (*delim)
+	ret = 0;
+	while (*s1 && ft_strchr(retained_char, s1++))
+		ret++;
+	return (ret);
+}
+
+/*
+ft_strcspn return the length of the maximum initial segment
+of the string pointed to by s1 which consists entirely of characters
+not from the string pointed to by rejected_char.
+*/
+static size_t ft_strcspn(const char *s1, const char *rejected_char)
+{
+	size_t rej;
+
+	rej = 0;
+	while (*s1)
 	{
-		if (*delim == *tok)
+		if (ft_strchr(rejected_char, *s1))
+			return (rej);
+		else
 		{
-			*tok = '\0';
-			n++;
-		}
-		delim++;
+			s1++;
+			rej++;
+		}		
 	}
+	return (rej);
 }
 
 static char	*ft_strtok(char *str, const char *delim)
@@ -38,8 +60,18 @@ static char	*ft_strtok(char *str, const char *delim)
 		tok = str;
 	else if (!tok)
 		return 0;
-	str = tok + ft_delim_count(tok, delim);
-	
+	str = tok + ft_strspn(tok, delim);
+	tok = str + ft_strcspn(str, delim);
+	if (tok == str)
+		return (tok = 0);
+	if (*tok)
+	{
+		*tok == '\0';
+		tok + 1;
+	}
+	else
+		tok = 0;
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
