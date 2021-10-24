@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/21 21:28:46 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2021/10/24 12:59:51 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,30 +77,14 @@ static char	*ft_strtok(char *str, const char *delim)
 char	**ft_split(char const *s, char c)
 {
 	char	**split_arr;
-	int		nbr_split;
-	int		len_s;
-	int		i;
-	int		*arr_len;
+	char *token;
+	size_t size;
+	
+	token = ft_strtok(s,c);
 
-	nbr_split = ft_nbr_split(s, c);
-	
-	
-	split_arr = malloc((nbr_split + 1), sizeof(char *));
-	if (!split_arr)
-		return (NULL);
-	*split_arr[nbr_split + 1] = "\0";
-	while (i <= nbr_split)
+	while (!token)
 	{
-		split_arr[i] = ft_calloc(len_s, sizeof(char));
-		if (!split_arr[i])
-		{
-			return (NULL);
-			free(split_arr);
-		}
-	}
-	while (i <= nbr_split)
-	{
-		s = ft_strchr()
-		split_arr[i] =  
+		split_arr = malloc(size * sizeof(char*));
+		token  = ft_strtok(NULL,c);
 	}
 }

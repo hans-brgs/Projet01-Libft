@@ -62,7 +62,7 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 | :--- | :-------------- | :----------------: | :----------------: | :----------------: | :----: |
 | 24   | `ft_substr`     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
 | 25   | `ft_strjoin`    | :heavy_check_mark: |        :x:         |        :x:         |  :x:   |
-| 26   | `ft_strtrim`    | :heavy_check_mark:         |        :x: |        :x:         |  :x:   |
+| 26   | `ft_strtrim`    | :heavy_check_mark: |        :x:         |        :x:         |  :x:   |
 | 27   | `ft_split`      |        :x:         |        :x:         |        :x:         |  :x:   |
 | 28   | `ft_itoa`       |        :x:         |        :x:         |        :x:         |  :x:   |
 | 29   | `ft_strmapi`    |        :x:         |        :x:         |        :x:         |  :x:   |
