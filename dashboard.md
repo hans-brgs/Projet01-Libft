@@ -10,7 +10,7 @@
 
 - [x] Overlapping (chevauchement de la mémoire).
 - [ ] Code détaillé `ft_split`
-- [ ] t
+- [ ] Map function
 
 ## Flag à utiliser pour les tests
 
@@ -61,16 +61,32 @@ gcc -Wall -Wextra -Wall test/test_fct.c fct.c
 |      | Function        |   *Fonctionnel*    |      *Norme*       |   *Compilation*    | *Test* |
 | :--- | :-------------- | :----------------: | :----------------: | :----------------: | :----: |
 | 24   | `ft_substr`     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
-| 25   | `ft_strjoin`    | :heavy_check_mark: |        :x:         |        :x:         |  :x:   |
-| 26   | `ft_strtrim`    | :heavy_check_mark: |        :x:         |        :x:         |  :x:   |
-| 27   | `ft_split`      |        :x:         |        :x:         |        :x:         |  :x:   |
-| 28   | `ft_itoa`       |        :x:         |        :x:         |        :x:         |  :x:   |
-| 29   | `ft_strmapi`    |        :x:         |        :x:         |        :x:         |  :x:   |
-| 30   | `ft_striteri`   |        :x:         |        :x:         |        :x:         |  :x:   |
-| 31   | `ft_putchar_fd` |        :x:         |        :x:         |        :x:         |  :x:   |
-| 32   | `ft_putstr_fd`  |        :x:         |        :x:         |        :x:         |  :x:   |
-| 33   | `ft_putendl_fd` |        :x:         |        :x:         |        :x:         |  :x:   |
-| 34   | `ft_putnbr_fd`  |        :x:         |        :x:         |        :x:         |  :x:   |
+| 25   | `ft_strjoin`    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 26   | `ft_strtrim`    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 27   | `ft_split`      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 28   | `ft_itoa`       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 29   | `ft_strmapi`    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 30   | `ft_striteri`   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 31   | `ft_putchar_fd` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 32   | `ft_putstr_fd`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 33   | `ft_putendl_fd` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+| 34   | `ft_putnbr_fd`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :x:   |
+
+*Partie Bonus*
+
+|      | Function          | *Fonctionnel* | *Norme* | *Compilation* | *Test* |
+| :--- | :---------------- | :-----------: | :-----: | :-----------: | :----: |
+| 35   | `ft_lstnew`       |      :x:      |   :x:   |      :x:      |  :x:   |
+| 36   | `ft_lstadd_front` |      :x:      |   :x:   |      :x:      |  :x:   |
+| 37   | `ft_lstsize`      |      :x:      |   :x:   |      :x:      |  :x:   |
+| 38   | `ft_lstlast`      |      :x:      |   :x:   |      :x:      |  :x:   |
+| 39   | `ft_lstadd_back`  |      :x:      |   :x:   |      :x:      |  :x:   |
+| 40   | `ft_lstdelone`    |      :x:      |   :x:   |      :x:      |  :x:   |
+| 41   | `ft_lstclear`     |      :x:      |   :x:   |      :x:      |  :x:   |
+| 42   | `ft_lstiter`      |      :x:      |   :x:   |      :x:      |  :x:   |
+| 43   | `ft_lstmap`       |      :x:      |   :x:   |      :x:      |  :x:   |
+
+
 
 *Fichier à ajouter au projet :*
 
@@ -322,66 +338,38 @@ de *dest*, alors :
             Etape 3
  ```
 
+- Sinon on utilse le meme fonctionnement que la fonction memcpy.
 
-- Sinon on utilse le meme fonctionnement que la fonction memcpy. 
-
-## V. `ft_split` : détail du code.
+## V. `ft_split` : détail du code
 
 ----------------
 
 `ft_split` alloue et renvoie un tableau de chaînes de caractères obtenu en séparant 's' en utilisant le caractère 'c' comme délimiteur.  Le tableau doit être terminé par un pointeur NULL.
 
-Les étapes à la bonne réalisation de `ft_split` : 
- 1. création `ft_strtok`.
-      * Création de `ft_strspn`.
-      * Création de `ft_strcspn`.
- 2. 
+Les étapes à la bonne réalisation de `ft_split` :
+ 1.
+ 2.
 
-### 1. `ft_strtok`
+### 1
 
-`ft_strtok` accepte deux chaînes - la première est la chaîne à diviser, la seconde est une chaîne contenant tous les délimiteurs. `ft_strtok` renvoie un pointeur vers le caractère du prochain token. Ainsi, la première fois qu'il est appelé, il pointera sur le premier mot.
+## VI. *Mapping function* : Passage d'une fonction en paramètre
 
-Mais il y a autre chose. `strtok` modifie la chaîne originale. Il place des caractères `NULL ('\0')` à la position du délimiteur après chaque appel à `strtok` afin que les segments de chaine de caractères puissent être suivis. `strtok` se souvient également en interne de la position de départ du prochain segment. Ainsi, après le premier appel à strtok, la position de str, ptr et du prochain segment ressemble à ce qui suit :
+----------------
 
-```C
-str = "Essaye de me couper"
-ptr = ft_strtok(str, " ");
-```
+### 1 Definition
 
-```shell
-> Essaye\0de me couper
-  ^      ^
-  |      prochain élément
-  ptr points here
-```
+En langage C il n'est pas autorisé de passer une fonction comme argument à une autre fonction. Cependant il est possible de passer **la référence** d'une fonction comme paramètre en utilisant un **pointeur** de fonction.
+Ce processus est appelé "nom d'appel par référence"
 
-lors du prochain appel de strtok, le premier paramètre doit être NULL pour que strtok commence à diviser la chaîne à partir de la prochaine position de départ du token dont il se souvient.
+### 2 Déclaration
+Par conséquent, la programmation C vous permet de créer un pointeur vers la fonction, qui peut ensuite être transmis comme argument à une autre fonction. Nous pouvons créer un pointeur de fonction comme suit :
 
 ```C
-ptr = ft_strtok(NULL, " ");
+// Pointeur de function 
+(type)(*pointer_name)(parameter)
+
+// Code exemple
+void myfunction(void (*f)(int));
 ```
+Il est recommandé de créer des fonctions qui peuvent fonctionner avec différents types de paramètres. Pour ce faire, il suffit de déclarer que le paramètre est de type `void *`, puis d'effectuer un casting du type approprié dans le corps de la fonction, par exemple : `void (*f)(int)`.
 
-```shell
-> Essaye\0de\0me couper
-          ^   ^
-          |   prochain élément
-          ptr points here
-```
-
-strtok retourne NULL quand il n'y a plus de tokens, c'est-à-dire que la chaîne entière est divisée. Ceci peut être utilisé pour savoir quand arrêter d'appeler strtok.
-
-Voici une proposition d'implémentation de strtok : 
-
-```C
-char *ft_strtok(char *str, const char *delim)
-{
-  char *tok;
-
-  if (str == NULL)
-    str = tok;
-  tok = str + strspn(str, delim);
-  str
-
-
-}
-```

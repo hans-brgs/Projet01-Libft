@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 16:33:06 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 18:07:29 by hbourgeo         ###   ########.fr       */
+/*   Created: 2021/10/25 09:48:30 by hbourgeo          #+#    #+#             */
+/*   Updated: 2021/10/25 10:23:33 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
+#include <unistd.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str_join;
-	size_t	len_str_join;
+	unsigned int	n_bis;
 
-	len_str_join = ft_strlen(s1) + ft_strlen(s2);
-	str_join = ft_calloc(len_str_join + 1, sizeof(char));
-	if (!str_join)
-		return (NULL);
-	while (*s1)
+	n_bis = 0;
+	if (n < 0)
 	{
-		*str_join = *s1;
-		s1++;
-		str_join++;
+		n_bis = -n;
+		ft_putchar_fd('-', fd);
 	}
-	while (*s2)
+	else
+		n_bis = n;
+	if (n_bis > 9)
 	{
-		*str_join = *s2;
-		s2++;
-		str_join++;
+		ft_putnbr_fd(n_bis / 10, fd);
+		ft_putnbr_fd(n_bis % 10, fd);
 	}
-	return (str_join);
+	else
+		ft_putchar_fd(n_bis + '0', fd);
 }

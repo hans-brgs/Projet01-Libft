@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 16:33:06 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 18:07:29 by hbourgeo         ###   ########.fr       */
+/*   Created: 2021/10/25 08:51:29 by hbourgeo          #+#    #+#             */
+/*   Updated: 2021/10/25 09:21:07 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str_join;
-	size_t	len_str_join;
+	unsigned int	i;
+	char			*str;
 
-	len_str_join = ft_strlen(s1) + ft_strlen(s2);
-	str_join = ft_calloc(len_str_join + 1, sizeof(char));
-	if (!str_join)
+	if (!s || !f)
 		return (NULL);
-	while (*s1)
+	str = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		*str_join = *s1;
-		s1++;
-		str_join++;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	while (*s2)
-	{
-		*str_join = *s2;
-		s2++;
-		str_join++;
-	}
-	return (str_join);
+	return (str);
 }

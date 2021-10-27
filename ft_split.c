@@ -6,85 +6,80 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 12:59:51 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:53:07 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 #include <string.h>
 
-/*
-ft_strspn return the length of the maximum initial segment
-of the string pointed to by s1 which consists entirely of characters
-from the string pointed to by retained_char.
-*/
-static size_t ft_strspn(const char *s1, const char *retained_char)
+static char	**ft_free_array(char	**split_arr, size_t n)
 {
-	size_t ret;
-
-	ret = 0;
-	while (*s1 && ft_strchr(retained_char, s1++))
-		ret++;
-	return (ret);
+	while (n > 0)
+	{
+		free(split_arr[n--]);
+	}
+	free(split_arr);
+	return (NULL);
 }
 
-/*
-ft_strcspn return the length of the maximum initial segment
-of the string pointed to by s1 which consists entirely of characters
-not from the string pointed to by rejected_char.
-*/
-static size_t ft_strcspn(const char *s1, const char *rejected_char)
+static size_t	ft_count_word(const char *str, char delim)
 {
-	size_t rej;
+	int		state;
+	size_t	wc;
 
-	rej = 0;
-	while (*s1)
+	state = 0;
+	wc = 0;
+	while (*str)
 	{
-		if (ft_strchr(rejected_char, *s1))
-			return (rej);
-		else
+		if (*str == delim)
+			state = 0;
+		else if (state == 0)
 		{
-			s1++;
-			rej++;
-		}		
+			state = 1;
+			wc++;
+		}
+		str++;
 	}
-	return (rej);
+	return (wc);
 }
 
-static char	*ft_strtok(char *str, const char *delim)
+char	*ft_init_str(char const *s, char c)
 {
-	static char	*tok;
+	char	*str;
+	int		i;
 
-	tok = 0;
-	if (str)
-		tok = str;
-	else if (!tok)
-		return 0;
-	str = tok + ft_strspn(tok, delim);
-	tok = str + ft_strcspn(str, delim);
-	if (tok == str)
-		return (tok = 0);
-	if (*tok)
-	{
-		*tok == '\0';
-		tok + 1;
-	}
-	else
-		tok = 0;
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	str = ft_calloc(i + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s, i + 1);
 	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**split_arr;
-	char *token;
-	size_t size;
-	
-	token = ft_strtok(s,c);
+	size_t	wc;
+	size_t	n;
 
-	while (!token)
+	n = 0;
+	wc = ft_count_word(s, c);
+	split_arr = ft_calloc((wc + 1), sizeof(char *));
+	if (!split_arr)
+		return (NULL);
+	while (n < wc)
 	{
-		split_arr = malloc(size * sizeof(char*));
-		token  = ft_strtok(NULL,c);
+		while (*s && s[0] == c)
+			s++;
+		split_arr[n] = ft_init_str(s, c);
+		if (!split_arr[n])
+			return (ft_free_array(split_arr, n));
+		s = s + ft_strlen(split_arr[n]);
+		n++;
 	}
+	return (split_arr);
 }
