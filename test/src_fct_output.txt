@@ -1,7 +1,14 @@
 =====================================================
-testing strdup("Duplique moi, grand fou <3") :
-return : "Duplique moi, grand fou <3"
-testing strdup("") :
-return : ""
-
+testing atoi("test1") :
+	0
+testing atoi("0123456789") :
+	123456789
+testing atoi("0") :
+	0
+testing atoi("012345.6789") :
+	12345
+testing atoi("-012345") :
+	-12345
+testing atoi("-2147483648") :
+	-2147483648
 =====================================================

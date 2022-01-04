@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2021/10/25 10:17:37 by hbourgeo         ###   ########.fr        #
+#    Updated: 2021/11/07 14:44:41 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,21 +49,32 @@ SRC = 	ft_isalpha.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
+
+SRC_B = ft_lstnew.c 		\
+		ft_lstadd_front.c	\
+		ft_lstsize.c		\
+		ft_lstlast.c		\
 		
 OBJ = $(SRC:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
 
 HEADER = libft
 
 all : $(NAME)
-
+	
 $(OBJ) : $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC) 
 
 $(NAME) : $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(OBJ_B)
+	ar -rcs $(NAME) $(OBJ) $(OBJ_B)
+	touch bonus	
+
 clean : 
 	rm -rf *.o
+	rm -f bonus
 
 fclean : clean
 	rm -rf $(NAME)	
