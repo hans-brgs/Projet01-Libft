@@ -6,16 +6,16 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:08:42 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/11/07 14:16:51 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/09 18:19:24 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	size_t len;
-	
+	size_t	len;
+
 	len = 0;
 	if (!lst)
 		return (0);
@@ -24,5 +24,5 @@ int ft_lstsize(t_list *lst)
 		lst = lst->next;
 		len++;
 	}
-	return (len);	
+	return (len);
 }

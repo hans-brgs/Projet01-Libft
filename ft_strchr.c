@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 19:42:01 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/09 20:06:47 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/09 18:09:02 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	while (*s != c)
 	{
-		if (*s == c)
-			return ((char *)s);
-		else
-			s++;
+		if (*s == '\0')
+			return (NULL);
+		s++;
 	}
-	if (*s == c)
-		return ((char *)s);
-	else
-		return (NULL);
+	return ((char *)s);
 }

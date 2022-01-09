@@ -284,11 +284,11 @@ Supposons que nous avons un tableau de 5 chars.
  0x100 0x101 0x102 0x103 0x104
  ```
 
- nous allons utilisé *memcpy* pour copier les 3 premiers bytes d'un pointeur pointant à l'adresse `0x100` (src), dans le block mémoire débutant à l'adresse `0x102` (dest).
+ nous allons utilisé *memcpy* pour copier les 3 premiers bytes d'un pointeur ,pointant à l'adresse `0x100` (src), dans le block mémoire débutant à l'adresse `0x102` (dest).
 
  Dans ce cas on observe un cas d'overlapping.
 
- L'addresse `0x102` est contenu à la dans le block mémoire *src* et dans le block mémoire *dest*.
+ L'addresse `0x102` est contenu à la fois dans le block mémoire *src* et dans le block mémoire *dest*.
 
  Ainsi lors de la copie le char `c` sera transformé en `a`. memcpy ne copiera plus `abc`, dans le bloc mémoire débutant à l'adresse `0x102`, mais `aba`.
 
@@ -372,4 +372,53 @@ Par conséquent, la programmation C vous permet de créer un pointeur vers la fo
 void myfunction(void (*f)(int));
 ```
 Il est recommandé de créer des fonctions qui peuvent fonctionner avec différents types de paramètres. Pour ce faire, il suffit de déclarer que le paramètre est de type `void *`, puis d'effectuer un casting du type approprié dans le corps de la fonction, par exemple : `void (*f)(int)`.
+
+## V. Pourquoi utiliser *size_t* pour indexer un array ? 
+
+----------------
+size_t est un entier non signé capable de contenir la taille du plus grand objet que vous pouvez allouer. Il est utile pour l'indexation car cela signifie qu'il peut indexer dans le plus grand tableau que vous pouvez allouer.
+
+Source :
+
+- <https://stackoverflow.com/questions/55604029/should-i-always-use-size-t-when-indexing-arrays>
+
+
+## VI. Moyen mnemotechnique pour les pointeurs
+
+----------------
+
+```c
+int  *ptr;
+
+"ptr" est un pointeur sur int.
+int       *     ptr
+^    ^    ^  
+int  sur  pointeur
+(a lire dans le sens inverse 'pointeur sur int')   
+
+"*ptr" est un int
+int       *     ptr
+^    
+int  
+```
+
+## VII. *void \** - Les pointeurs sur rien£
+
+----------------
+
+void * est un pointeur générique il peut prendre l'adresse de n'importe quel type. 
+Attention on en peut pas déréférencer un void *. 
+Il faut d'abord faire une conversion de type. 
+
+Donc les void* permettent uniquement de transporter des adresses.
+
+## VIII.  Connaitre la position de deux variables en mémoire.
+
+----------------
+
+On peut connaitre la position de deux variables, en comparant leur adresse. 
+
+```c
+C
+
 
