@@ -6,34 +6,34 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:53:27 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/13 13:24:17 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:34:32 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int	nbr;
-	int	n;
+	char	sign;
+	int		nbr;
 
-	n = 0;
+	sign = 0;
 	nbr = 0;
-	while (nptr[n])
+	while (*str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (nptr[n] == '-')
-			n++;
-		if (ft_isdigit(nptr[n]))
-		{
-			nbr = nbr * 10;
-			nbr = nbr + (nptr[n] - '0');
-		}
-		else
-			return (nbr);
-		n++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	if (nptr[0] == '-')
-		return (-nbr);
-	else
-		return (nbr);
+	while (*str && ft_isdigit(*str))
+	{
+		nbr *= 10;
+		nbr += *str - '0';
+		str++;
+	}
+	if (sign == -1)
+		nbr = -nbr;
+	return (nbr);
 }
