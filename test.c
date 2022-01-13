@@ -1,46 +1,39 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-
+#include <limits.h>
 #include <stdlib.h>
 
-int	ft_atoi(const char *str)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	sign;
-	int		nbr;
-	
-	sign = 0;
-	nbr = 0;
-	while (*str == 32)
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str && isdigit(*str))
-	{
-		nbr *= 10;
-		nbr += *str - '0';
-		str++;
-	}
-	if (sign == -1)
-		nbr = -nbr;
-	return (nbr);
+	size_t s1_len;
+	size_t s2_len;
+	char *ptr;
+	size_t tot_size;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	tot_size = s1_len + s2_len + 1;
+
+	ptr = malloc(tot_size * sizeof(char));
+	if (!ptr)
+		return(NULL);
+	ft_strlcpy(ptr, s1, s1_len + 1);
+	ft_strlcat(ptr, s2, tot_size);
+	return(ptr);
 }
 
 int main(void)
 {
-	char str1[] = "   2147483648";
+	char str1[] = "test";
 	// char str2[] = "veaatt";
 	// size_t n;
 	// n = 0;
 
-	int c;
+	char *c;
 
-	c = atoi(str1);
-	printf("c = %d\n", c);
+	c = ft_strdup(str1);
+	printf("c = %s\n", c);
 	printf("=====================================================\n");
 
 	// char str3[] = "beabtt";

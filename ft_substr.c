@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:50:09 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 20:19:45 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/13 21:16:20 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub_str;
 	size_t	n;
 
-	n = 0;
-	sub_str = ft_calloc(len + 1, sizeof(char));
+	sub_str = malloc((len + 1) * sizeof(char));
 	if (!sub_str)
 		return (NULL);
-	while (*s && n < start)
+	while (*s && start)
 	{
 		s++;
-		n++;
+		start--;
 	}
-	n = 0;
-	while (*s && n < len)
-	{
-		*sub_str = *s;
-		s++;
-		sub_str++;
-		n++;
-	}
+	ft_strlcpy(sub_str, s, len + 1);
 	return (sub_str);
 }

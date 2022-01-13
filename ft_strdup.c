@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 17:04:32 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 18:06:24 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/13 20:43:23 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(const char *s)
 	len = ft_strlen(s) + 1;
 	dup_str = malloc(len * sizeof(char));
 	if (!dup_str)
-		return (0);
+		return (NULL);
 	ft_strlcpy(dup_str, s, len);
 	return (dup_str);
 }

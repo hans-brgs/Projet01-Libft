@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 16:13:54 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 18:08:52 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/12 21:52:56 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 
 	ptr = malloc(nmemb * size);
-	if (ptr == 0)
-		return (0);
+	if (ptr == NULL)
+		return (NULL);
 	ptr = ft_memset(ptr, 0, nmemb * size);
 	return (ptr);
 }
