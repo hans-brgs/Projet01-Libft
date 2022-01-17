@@ -6,80 +6,66 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/24 18:53:07 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/16 19:52:48 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <string.h>
 
-static char	**ft_free_array(char	**split_arr, size_t n)
+size_t	ft_count_element(char const *s, char c)
 {
-	while (n > 0)
+	size_t	count;
+
+	count = 0;
+	while (*s)
 	{
-		free(split_arr[n--]);
+		if (*s == c)
+			count ++;
+		s++;
 	}
-	free(split_arr);
+	return (count + 1);
+}
+
+size_t	ft_element_length(char const *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len] != c && s[len])
+		len++;
+	return (len);
+}
+
+char	**ft_free_array(char **array, size_t n)
+{
+	while (n--)
+		free(array[n]);
+	free(array);
 	return (NULL);
-}
-
-static size_t	ft_count_word(const char *str, char delim)
-{
-	int		state;
-	size_t	wc;
-
-	state = 0;
-	wc = 0;
-	while (*str)
-	{
-		if (*str == delim)
-			state = 0;
-		else if (state == 0)
-		{
-			state = 1;
-			wc++;
-		}
-		str++;
-	}
-	return (wc);
-}
-
-char	*ft_init_str(char const *s, char c)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	str = ft_calloc(i + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s, i + 1);
-	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**split_arr;
-	size_t	wc;
+	size_t	nb_delim;
+	size_t	len_split;	
 	size_t	n;
+	char	**array;
 
 	n = 0;
-	wc = ft_count_word(s, c);
-	split_arr = ft_calloc((wc + 1), sizeof(char *));
-	if (!split_arr)
-		return (NULL);
-	while (n < wc)
+	nb_delim = ft_count_element(s, c);
+	array = malloc(nb_delim * sizeof(char *));
+	if (array == NULL)
+		return (ft_free_array(array, n));
+	while (nb_delim--)
 	{
-		while (*s && s[0] == c)
-			s++;
-		split_arr[n] = ft_init_str(s, c);
-		if (!split_arr[n])
-			return (ft_free_array(split_arr, n));
-		s = s + ft_strlen(split_arr[n]);
+		len_split = ft_element_length(s, c);
+		array[n] = ft_calloc(len_split + 1, sizeof(char));
+		if (array == NULL)
+			return (NULL);
+		ft_strlcpy(array[n], s, len_split + 1);
+		s = s + len_split + 1;
 		n++;
 	}
-	return (split_arr);
+	return (array);
 }
