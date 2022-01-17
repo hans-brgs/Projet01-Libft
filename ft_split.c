@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/16 19:52:48 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/17 15:41:47 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,19 @@ char	**ft_split(char const *s, char c)
 
 	n = 0;
 	nb_delim = ft_count_element(s, c);
-	array = malloc(nb_delim * sizeof(char *));
+	array = malloc(nb_delim + 1 * sizeof(char *));
 	if (array == NULL)
-		return (ft_free_array(array, n));
+		return (NULL);
 	while (nb_delim--)
 	{
 		len_split = ft_element_length(s, c);
 		array[n] = ft_calloc(len_split + 1, sizeof(char));
 		if (array == NULL)
-			return (NULL);
+			return (ft_free_array(array, n));
 		ft_strlcpy(array[n], s, len_split + 1);
 		s = s + len_split + 1;
 		n++;
 	}
+	array[n] = NULL;
 	return (array);
 }

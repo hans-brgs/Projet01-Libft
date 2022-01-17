@@ -6,50 +6,53 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 19:38:29 by hbourgeo          #+#    #+#             */
-/*   Updated: 2021/10/25 10:24:28 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:42:50 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-static size_t	ft_count_digit(int n)
+size_t	ft_number_length(unsigned int tmp)
 {
-	size_t	count;
+	size_t	len_nbr;
 
-	count = 0;
-	while (n)
+	len_nbr = 0;
+	if (tmp == 0)
+		return (len_nbr + 1);
+	while (tmp > 0)
 	{
-		n /= 10;
-		count++;
+		tmp /= 10;
+		len_nbr++;
 	}
-	return (count);
+	return (len_nbr);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nbr)
 {
-	char			*str;
-	size_t			len;
-	size_t			neg;
 	unsigned int	tmp;
+	size_t			len_nbr;
+	char			*str;
+	int				isneg;
 
-	neg = 0;
-	len = 0;
-	if (n < 0)
+	isneg = 0;
+	if (nbr < 0)
 	{
-		neg = 1;
-		tmp = -n;
+		tmp = -nbr;
+		isneg = 1;
 	}
-	len = neg + ft_count_digit(tmp);
-	str = ft_calloc(len + 1, sizeof(char));
+	else
+		tmp = nbr;
+	len_nbr = isneg + ft_number_length(tmp);
+	str = ft_calloc(len_nbr + 1, sizeof(char));
 	if (!str)
 		return (NULL);
-	while (len--)
+	while (len_nbr--)
 	{
-		str[len] = '0' + (tmp % 10);
+		str[len_nbr] = (tmp % 10) + '0';
 		tmp /= 10;
 	}
-	if (neg)
+	if (nbr < 0)
 		str[0] = '-';
 	return (str);
 }

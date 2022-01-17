@@ -4,106 +4,61 @@
 #include <limits.h>
 #include <stdlib.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t ft_number_length(unsigned int tmp)
 {
-	size_t	i;
-	size_t len_src;
-	
-	len_src = strlen(src);
-	i = 0;
-	if (size == 0)
+	size_t len_nbr;
+
+	len_nbr = 0;
+	if (tmp == 0)
+		return(len_nbr + 1);
+	while (tmp > 0)
 	{
-		*dst = '\0';
-		return (len_src);
+		tmp /= 10;
+		len_nbr++;
+	}
+	return (len_nbr);
+}
+
+char *ft_itoa(int nbr)
+{
+	unsigned int tmp;
+	size_t len_nbr;
+	char *str;
+	int isneg;
+
+	isneg = 0;
+	if (nbr < 0)
+	{
+		tmp = -nbr;
+		isneg = 1;
 	}
 	else
+		tmp = nbr;
+	len_nbr = isneg + ft_number_length(tmp);
+	str = calloc(len_nbr + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	while (len_nbr--)
 	{
-		while (*src && i < size - 1)
-		{
-			dst[i] = *src;
-			src++;
-			i++;
-		}
-		dst[i] = '\0';
-		return (len_src);
+		str[len_nbr] = (tmp % 10) + '0';
+		tmp /= 10;
 	}
+	if (nbr < 0)
+		str[0] = '-';
+	return (str);
 }
-
-
-#include <string.h>
-
-size_t	ft_count_element(char const *s, char c)
-{
-	size_t	count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s == c)
-			count ++;
-		s++;
-	}
-	return (count + 1);
-}
-
-size_t	ft_element_length(char const *s, char c)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len] != c && s[len])
-		len++;
-	return (len);
-}
-
-char	**ft_free_array(char **array, size_t n)
-{
-	while (n--)
-		free(array[n]);
-	free(array);
-	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t	nb_delim;
-	size_t	len_split;	
-	size_t	n;
-	char	**array;
-
-	n = 0;
-	nb_delim = ft_count_element(s, c);
-	array = malloc(nb_delim * sizeof(char *));
-	if (array == NULL)
-		return (ft_free_array(array, n));
-	while (nb_delim--)
-	{
-		len_split = ft_element_length(s, c);
-		array[n] = calloc(len_split + 1, sizeof(char));
-		if (array == NULL)
-			return (NULL);
-		ft_strlcpy(array[n], s, len_split + 1);
-		s = s + len_split + 1;
-		n++;
-	}
-	return (array);
-}
-
 
 int main(void)
 {
-	char str1[] = "/test//moi/vite/";
-	char set = '/';
-
+	int nbr[4] = {-2147483648, 2147483647, 0, -255};
+	char	*c;
 	size_t n;
 	n = 0;
-
-	char **c;
-
-	c = ft_split(str1, set);
-	while(n <= 5)
+	c = ft_itoa(nbr[n]);
+	while (n < 4)
 	{
-		printf("c = %s %ld\n", c[n], n);
+		c = ft_itoa(nbr[n]);
+		printf("c = %s\n", c);
 		n++;
 	}
 	printf("=====================================================\n");
