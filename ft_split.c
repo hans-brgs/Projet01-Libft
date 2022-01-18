@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/17 15:41:47 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:32:54 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**ft_split(char const *s, char c)
 
 	n = 0;
 	nb_delim = ft_count_element(s, c);
-	array = malloc(nb_delim + 1 * sizeof(char *));
+	array = malloc((nb_delim + 1) * sizeof(char *));
 	if (array == NULL)
 		return (NULL);
 	while (nb_delim--)
@@ -67,6 +67,6 @@ char	**ft_split(char const *s, char c)
 		s = s + len_split + 1;
 		n++;
 	}
-	array[n] = NULL;
+	array[nb_delim] = NULL;
 	return (array);
 }
