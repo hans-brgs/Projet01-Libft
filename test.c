@@ -5,28 +5,23 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-
-void ft_putnbr_fd(int n, int fd)
+typedef struct s_list 
 {
-	unsigned int nbr_bis;
+	void *content;
+	struct s_list *next;
+} t_list;
 
-	if (fd < 0)
-		return ;
-	if (n < 0)
-	{
-		nbr_bis = -n;
-		write(fd, "-", 1);
-	}
-	else 
-		nbr_bis = n;
-	while (nbr_bis > 9)
-	{
-		ft_putnbr_fd(nbr_bis / 10, fd);
-		nbr_bis = nbr_bis % 10;
-	}
-	nbr_bis = nbr_bis + '0';
-	write(fd, &nbr_bis, 1);
-	return ;
+t_list *ft_lstnew(void *content)
+{
+	t_list *new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+
+	return (new);
 }
 
 int main(void)
