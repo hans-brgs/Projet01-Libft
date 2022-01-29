@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:53:27 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/12 21:11:14 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:34:25 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str && isdigit(*str))
+	while (*str && ft_isdigit(*str))
 	{
 		nbr = nbr * 10 + (*str - '0');
 		str++;

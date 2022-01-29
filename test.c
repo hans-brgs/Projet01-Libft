@@ -29,6 +29,52 @@ void ft_lstadd_front(t_list **lst, t_list *new)
     *lst = new;
 }
 
+int ft_lstsize(t_list *lst)
+{
+	size_t	len;
+
+	len = 0;
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		len++;
+	}
+	return (len);
+}
+
+t_list *ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst)
+		lst = lst->next;
+	return (lst);
+}
+
+void ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list *end;
+
+    if (!lst || !new)
+        return;
+    end = ft_lstlast(*lst);
+    if (!end)
+		*lst = new;
+	else
+		end->next = new;
+}
+
+void ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+    if (!lst || !del)
+        return;
+    del(lst->content);
+    free(lst);
+}
+
+
 int main() {
   
   t_list *l1;

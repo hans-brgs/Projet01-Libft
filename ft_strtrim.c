@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:55:11 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/16 16:09:37 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:37:30 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	n = 0;
 	trim_start = ft_continuous_occ(s1, set);
 	trim_end = ft_continuous_occ_rev(s1, set);
-	keep = strlen(s1) - (trim_end + trim_start);
-	str_trim = calloc(keep + 1, sizeof(char));
+	keep = ft_strlen(s1) - (trim_end + trim_start);
+	str_trim = ft_calloc(keep + 1, sizeof(char));
 	if (str_trim == NULL)
 		return (NULL);
 	while (trim_start--)

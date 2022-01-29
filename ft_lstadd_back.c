@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 15:01:34 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/09 18:15:41 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/25 18:06:20 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (!lst || !new)
 		return ;
-	last = ft_lstlast(*lst);
-	if (!last)
+	if (!*lst)
 		*lst = new;
 	else
+	{
+		last = ft_lstlast(*lst);
 		last->next = new;
+	}
 }
