@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:50:09 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/27 17:35:48 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:51:10 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub_str;
 
+	if (!s)
+		return (NULL);
 	sub_str = malloc((len + 1) * sizeof(char));
 	if (!sub_str)
 		return (NULL);

@@ -6,28 +6,35 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/27 17:38:07 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:21:14 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	ft_count_element(char const *s, char c)
+static size_t	ft_count_element(char const *s, char c)
 {
 	size_t	count;
+	size_t	state;
 
+	state = 0;
 	count = 0;
 	while (*s)
 	{
 		if (*s == c)
-			count ++;
+			state = 0;
+		else if (state == 0)
+		{
+			state = 1;
+			count++;
+		}	
 		s++;
 	}
-	return (count + 1);
+	return (count);
 }
 
-size_t	ft_element_length(char const *s, char c)
+static size_t	ft_element_length(char const *s, char c)
 {
 	size_t	len;
 
@@ -37,7 +44,7 @@ size_t	ft_element_length(char const *s, char c)
 	return (len);
 }
 
-char	**ft_free_array(char **array, size_t n)
+static char	**ft_free_array(char **array, size_t n)
 {
 	while (n--)
 		free(array[n]);
@@ -47,25 +54,28 @@ char	**ft_free_array(char **array, size_t n)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	nb_delim;
-	size_t	len_split;	
-	size_t	n;
+	size_t	len_split;
 	char	**array;
+	int		nb_delim;	
+	int		n;
 
-	n = 0;
+	if (!s)
+		return (NULL);
+	n = -1;
 	nb_delim = ft_count_element(s, c);
 	array = malloc((nb_delim + 1) * sizeof(char *));
 	if (array == NULL)
 		return (NULL);
-	while (nb_delim--)
+	while (n++ < nb_delim)
 	{
+		while (*s == c)
+			s++;
 		len_split = ft_element_length(s, c);
 		array[n] = ft_calloc(len_split + 1, sizeof(char));
 		if (array == NULL)
 			return (ft_free_array(array, n));
 		ft_strlcpy(array[n], s, len_split + 1);
-		s = s + len_split + 1;
-		n++;
+		s = s + len_split;
 	}
 	array[nb_delim] = NULL;
 	return (array);

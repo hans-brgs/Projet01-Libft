@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:28:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/16 19:37:38 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/30 14:50:00 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	len_src = ft_strlen(src);
 	i = 0;
 	if (size == 0)
-	{
-		*dst = '\0';
 		return (len_src);
-	}
 	else
 	{
 		while (*src && i < size - 1)

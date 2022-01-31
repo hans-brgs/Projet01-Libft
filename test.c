@@ -1,106 +1,80 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include "bsd/string.h"
 #include <limits.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
+#include "libft.h"
 
-typedef struct s_list 
-{
-    void *content;
-    struct s_list *next;
-} t_list;
+#include "libft.h"
 
-t_list    *ft_lstnew(void *content)
-{
-    t_list    *ptr;
-
-    ptr = malloc(sizeof(t_list));
-    if (!ptr)
-        return (NULL);
-    ptr->content = content;
-    ptr->next = NULL;
-    return (ptr);
-}
-
-void ft_lstadd_front(t_list **lst, t_list *new)
-{
-    new->next = *lst;
-    *lst = new;
-}
-
-int ft_lstsize(t_list *lst)
-{
-	size_t	len;
-
-	len = 0;
-	if (!lst)
-		return (0);
-	while (lst)
-	{
-		lst = lst->next;
-		len++;
-	}
-	return (len);
-}
-
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
-		return (0);
-	while (lst)
+		return (NULL);
+	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *end;
+	t_list	*last;
 
-    if (!lst || !new)
-        return;
-    end = ft_lstlast(*lst);
-    if (!end)
+	if (!lst || !new)
+		return ;
+	last = ft_lstlast(*lst);
+	if (!last)
 		*lst = new;
 	else
-		end->next = new;
+		last->next = new;
 }
 
-void ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list	*ft_lstnewone(void *content)
 {
-    if (!lst || !del)
-        return;
-    del(lst->content);
-    free(lst);
+	t_list	*elem;
+
+	elem = (t_list *)malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	if (!content)
+		elem->content = NULL;
+	else
+		elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }
 
+int main()
+{
+	t_list		*begin;
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	char		*str = strdup("lorem");
+	char		*str2 = strdup("ipsum");
+	char		*str3 = strdup("dolor");
+	char		*str4 = strdup("sit");
 
-int main() {
-  
-  t_list *l1;
-  t_list *add1;
-  t_list *add2;
-  int num0;
-  int num1;
-  int num2;
-  
-  num0 = 0;
-  num1 = 42;
-  num2 = 84;
-  
-  
-  l1 = NULL;
-  add1 = ft_lstnew(&num1);
-  add2 = ft_lstnew(&num2);
-  
-  ft_lstadd_front(&l1, add1);
-  ft_lstadd_front(&add1, add2);
-  while (add1 != NULL)
-  {
-        printf("%d -> ", *(int *)(add1->content));
-        add1 = add1->next;
-  }
-  
-
-  return 0;
+	elem = ft_lstnewone(str);
+	elem2 = ft_lstnewone(str2);
+	elem3 = ft_lstnewone(str3);
+	elem4 = ft_lstnewone(str4);
+	if (!elem || !elem2 || !elem3 || !elem4)
+		return (0);
+	else
+	{
+		begin = NULL;
+		ft_lstadd_back(&begin, elem);
+		ft_lstadd_back(&begin, elem2);
+		ft_lstadd_back(&begin, elem3);
+		ft_lstadd_back(&begin, elem4);
+		while (begin)
+		{
+			printf("%s\n", (char *)begin->content);
+			begin = begin->next;
+		}
+	}
+	return (0);
 }

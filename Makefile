@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2022/01/27 19:32:31 by hbourgeo         ###   ########.fr        #
+#    Updated: 2022/01/31 17:55:38 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRC_B = ft_lstnew.c			\
 		ft_lstdelone.c		\
 		ft_lstclear.c		\
 		ft_lstiter.c		\
+		ft_lstmap.c			\
 		
 OBJ = $(SRC:.c=.o)
 OBJ_B = $(SRC_B:.c=.o)

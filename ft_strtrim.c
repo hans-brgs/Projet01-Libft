@@ -6,14 +6,14 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:55:11 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/27 17:37:30 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:50:45 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_continuous_occ(char const *s1, char const *set)
+static size_t	ft_continuous_occ(char const *s1, char const *set)
 {
 	size_t	occ;
 
@@ -28,7 +28,7 @@ size_t	ft_continuous_occ(char const *s1, char const *set)
 	return (occ);
 }
 
-size_t	ft_continuous_occ_rev(char const *s1, char const *set)
+static size_t	ft_continuous_occ_rev(char const *s1, char const *set)
 {
 	size_t	s1_len;
 	size_t	occ;
@@ -45,28 +45,35 @@ size_t	ft_continuous_occ_rev(char const *s1, char const *set)
 	return (occ);
 }
 
+static void	ft_cpytrim(char const *s1, char *str_trim, int keep)
+{
+	while (keep--)
+	{
+		*str_trim = *s1;
+		s1++;
+		str_trim++;
+	}
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	trim_start;
-	size_t	trim_end;
-	size_t	n;
-	size_t	keep;
-	char	*str_trim;
+	size_t		trim_start;
+	size_t		trim_end;
+	char		*str_trim;
+	int			keep;
 
-	n = 0;
+	if (!s1 || !set)
+		return (NULL);
 	trim_start = ft_continuous_occ(s1, set);
 	trim_end = ft_continuous_occ_rev(s1, set);
 	keep = ft_strlen(s1) - (trim_end + trim_start);
+	if (keep < 0)
+		return ("\0");
 	str_trim = ft_calloc(keep + 1, sizeof(char));
 	if (str_trim == NULL)
 		return (NULL);
 	while (trim_start--)
 		s1++;
-	while (keep--)
-	{
-		str_trim[n] = *s1;
-		s1++;
-		n++;
-	}
+	ft_cpytrim(s1, str_trim, keep);
 	return (str_trim);
 }
