@@ -6,12 +6,11 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:55:11 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/31 17:50:45 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:06:55 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 static size_t	ft_continuous_occ(char const *s1, char const *set)
 {

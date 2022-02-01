@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2022/01/31 17:55:38 by hbourgeo         ###   ########.fr        #
+#    Updated: 2022/02/01 17:15:30 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,10 @@ $(OBJ) : $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC) 
 $(NAME) : $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
-
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_B)
+	
 bonus: $(OBJ) $(OBJ_B)
 	ar -rcs $(NAME) $(OBJ) $(OBJ_B)
 	touch bonus	

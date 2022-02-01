@@ -6,11 +6,11 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 21:11:59 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/31 14:07:50 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:07:48 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

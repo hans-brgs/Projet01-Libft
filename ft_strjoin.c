@@ -6,11 +6,10 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:33:06 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/31 17:22:00 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:07:17 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

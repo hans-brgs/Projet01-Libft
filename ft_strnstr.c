@@ -6,11 +6,10 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 09:54:42 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/31 14:30:12 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:07:00 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)

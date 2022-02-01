@@ -6,11 +6,10 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 19:38:29 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/31 17:06:55 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:08:19 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 static size_t	ft_number_length(unsigned int tmp)

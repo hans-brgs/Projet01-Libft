@@ -6,11 +6,10 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 17:04:32 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/01/13 20:43:23 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:07:22 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
 #include "libft.h"
 
