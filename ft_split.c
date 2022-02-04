@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/01 17:07:27 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/04 21:53:33 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static char	**ft_free_array(char **array, size_t n)
 	return (NULL);
 }
 
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	len_split;
@@ -64,7 +63,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	n = -1;
 	nb_delim = ft_count_element(s, c);
-	array = malloc((nb_delim+1) * sizeof(char *));
+	array = malloc((nb_delim + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
 	while (n++ < nb_delim - 1)
