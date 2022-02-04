@@ -39,7 +39,7 @@ static size_t	ft_element_length(char const *s, char c)
 	size_t	len;
 
 	len = 0;
-	while (s[len] != c && s[len])
+	while (s[len] && s[len] != c)
 		len++;
 	return (len);
 }
@@ -64,10 +64,10 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	n = -1;
 	nb_delim = ft_count_element(s, c);
-	array = ft_calloc((nb_delim + 1) ,sizeof(char *));
+	array = malloc((nb_delim+1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	while (n++ < nb_delim)
+	while (n++ < nb_delim - 1)
 	{
 		while (*s == c)
 			s++;
