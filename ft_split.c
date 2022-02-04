@@ -52,6 +52,7 @@ static char	**ft_free_array(char **array, size_t n)
 	return (NULL);
 }
 
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	len_split;
@@ -63,8 +64,8 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	n = -1;
 	nb_delim = ft_count_element(s, c);
-	array = malloc((nb_delim + 1) * sizeof(char *));
-	if (array == NULL)
+	array = ft_calloc((nb_delim + 1) ,sizeof(char *));
+	if (!array)
 		return (NULL);
 	while (n++ < nb_delim)
 	{
@@ -72,7 +73,7 @@ char	**ft_split(char const *s, char c)
 			s++;
 		len_split = ft_element_length(s, c);
 		array[n] = ft_calloc(len_split + 1, sizeof(char));
-		if (array == NULL)
+		if (!array)
 			return (ft_free_array(array, n));
 		ft_strlcpy(array[n], s, len_split + 1);
 		s = s + len_split;

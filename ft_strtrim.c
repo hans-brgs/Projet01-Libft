@@ -67,9 +67,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trim_end = ft_continuous_occ_rev(s1, set);
 	keep = ft_strlen(s1) - (trim_end + trim_start);
 	if (keep < 0)
-		return ("\0");
+		return (ft_strdup(""));
 	str_trim = ft_calloc(keep + 1, sizeof(char));
-	if (str_trim == NULL)
+	if (!str_trim)
 		return (NULL);
 	while (trim_start--)
 		s1++;
