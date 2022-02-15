@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:48:19 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/15 21:29:06 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:37:04 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void ft_putnbr_base_fd (int nbr, char *base, int fd)
 	}
 	else
 		nbr_bis = nbr;
-	if (nbr_bis > 9)
+	if (nbr_bis > size_base - 1)
 	{
 		ft_putnbr_fd(nbr_bis / size_base, fd);
 		ft_putnbr_fd(nbr_bis % size_base, fd);
