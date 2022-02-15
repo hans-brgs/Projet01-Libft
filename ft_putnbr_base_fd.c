@@ -6,13 +6,13 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:48:19 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/15 21:37:04 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:38:07 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int check_base(char *base)
+static size_t check_base(char *base)
 {
 	size_t i;
 	size_t j;
