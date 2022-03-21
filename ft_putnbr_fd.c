@@ -6,17 +6,18 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:48:30 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/01 17:07:32 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:40:49 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
+	static int		size;
 	unsigned int	n_bis;
 
+	size = 0;
 	n_bis = 0;
 	if (n < 0)
 	{
@@ -28,8 +29,13 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n_bis > 9)
 	{
 		ft_putnbr_fd(n_bis / 10, fd);
-		ft_putnbr_fd(n_bis % 10, fd);
+		n_bis %= 10;
 	}
-	else
-		ft_putchar_fd(n_bis + '0', fd);
+	if (n_bis < 10)
+		size += ft_putchar_fd(n_bis + '0', fd);
+	if (n < 0)
+	{
+		size ++;
+	}
+	return (size);
 }

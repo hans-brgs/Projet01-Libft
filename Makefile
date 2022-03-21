@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2022/02/15 21:34:15 by hbourgeo         ###   ########.fr        #
+#    Updated: 2022/02/17 17:54:07 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRC = 	ft_isalpha.c	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
 
-OWN = ft_putnbr_base_fd.c \
+OWN = 	ft_putnbr_base_fd.c 	\
+		ft_putnbr_unsigned_fd.c \
 
 SRC_B = ft_lstnew.c			\
 		ft_lstadd_front.c	\

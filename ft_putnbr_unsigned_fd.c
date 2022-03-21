@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned_fd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 09:24:45 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/18 10:25:18 by hbourgeo         ###   ########.fr       */
+/*   Created: 2022/02/17 17:52:48 by hbourgeo          #+#    #+#             */
+/*   Updated: 2022/02/17 19:43:33 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putnbr_unsigned_fd(unsigned int n, int fd)
 {
-	int	size;
+	static int		size;
+	unsigned int	n_bis;
 
 	size = 0;
-	if (fd < 0)
-		return (size);
-	size = write(fd, &c, sizeof(char));
+	n_bis = n;
+	if (n_bis > 9)
+	{
+		ft_putnbr_unsigned_fd(n_bis / 10, fd);
+		n_bis %= 10;
+	}
+	if (n_bis < 10)
+		size += ft_putchar_fd(n_bis + '0', fd);
 	return (size);
 }
