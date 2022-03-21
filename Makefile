@@ -65,7 +65,7 @@ SRC_B = ft_lstnew.c			\
 OBJ = $(SRC:.c=.o) $(OWN:.c=.o) 
 OBJ_B = $(SRC_B:.c=.o)
 
-$(OBJ) : $(SRC)
+$(OBJ) : $(SRC) $(OWN)
 	@$(CC) $(CFLAGS) -c $(SRC) $(OWN) 
 
 all : 	$(NAME)	
