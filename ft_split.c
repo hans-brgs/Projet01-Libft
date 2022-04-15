@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/04 21:53:33 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:49:06 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static size_t	ft_element_length(char const *s, char c)
 	return (len);
 }
 
-static char	**ft_free_array(char **array, size_t n)
+static char	**ft_free_array_split(char **array, size_t n)
 {
 	while (n--)
 		free(array[n]);
