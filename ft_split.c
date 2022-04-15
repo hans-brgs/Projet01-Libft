@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:39:00 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/04/15 12:49:06 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:51:09 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 		len_split = ft_element_length(s, c);
 		array[n] = ft_calloc(len_split + 1, sizeof(char));
 		if (!array)
-			return (ft_free_array(array, n));
+			return (ft_free_array_split(array, n));
 		ft_strlcpy(array[n], s, len_split + 1);
 		s = s + len_split;
 	}
