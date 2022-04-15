@@ -6,11 +6,12 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:38:35 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/04/15 12:39:02 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:52:45 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	ft_free_array(char **array)
 {
