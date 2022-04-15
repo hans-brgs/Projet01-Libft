@@ -6,7 +6,7 @@
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 22:00:07 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/18 10:27:48 by hbourgeo         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:39:35 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_putnbr_fd(int n, int fd);
 /* OWN */
 int		ft_putnbr_base_fd(unsigned long int nbr, char *base, int fd);
 int		ft_putnbr_unsigned_fd(unsigned int n, int fd);
+void	ft_free_array(char **array);
 
 /* BONUS */
 t_list	*ft_lstnew(void *content);
