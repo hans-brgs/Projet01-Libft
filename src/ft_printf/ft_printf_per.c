@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_printf_per.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/30 15:36:32 by hbourgeo          #+#    #+#             */
-/*   Updated: 2022/02/01 17:08:33 by hbourgeo         ###   ########.fr       */
+/*   Created: 2022/02/17 09:05:52 by hbourgeo          #+#    #+#             */
+/*   Updated: 2022/02/18 10:19:02 by hbourgeo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isalnum(int c)
+int	ft_printf_per(void)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	else
-		return (0);
+	int		size;
+	char	c;
+
+	size = 0;
+	c = '%';
+	size = write(1, &c, 1);
+	return (size);
 }
