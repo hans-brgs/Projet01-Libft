@@ -6,7 +6,7 @@
 #    By: hbourgeo <hbourgeo@student.19.be>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/30 19:37:13 by hbourgeo          #+#    #+#              #
-#    Updated: 2022/04/21 11:08:20 by hbourgeo         ###   ########.fr        #
+#    Updated: 2022/04/21 11:31:03 by hbourgeo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 VPATH = $(INC_DIR) $(OBJ_DIR) $(shell find $(SRC_DIR) -type d)
 
 # make rules
-print-%: ; @echo $* = $($*)
-
 all : $(NAME)
-
-only_obj : $(OBJ_DIR) $(OBJS)
 
 $(OBJ_DIR)%.o : %.c $(DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -55,3 +51,14 @@ fclean : clean
 re : fclean all
 
 .PHONY : clean fclean all re
+
+print-%: ; @echo $* = $($*)
+
+# GIT
+
+MSG = "default"
+ 
+git: 
+	@-git add .
+	@git commit -am "`date +'%Y-%m-%d %H:%M:%S'` | $(MSG)"
+	@-git push
